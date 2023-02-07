@@ -5,7 +5,7 @@
  * @Package Database
  */
 
-define('DOMAIN_URL', 'https://nom_domain.com/'); 
+define('DOMAIN_URL', 'https://nom_domain.com/');
 define('path_media', ''); /* chnage to your domain here - don't forget to add forward slash at the end of the URL like this "/" */
 
 class Database
@@ -16,26 +16,18 @@ class Database
      * means that they will only be available with the 
      * Database class
      */
+    private $db_host = "localhost";
+    private $db_user = "root";
+    private $db_pass = "";
+    private $db_name = "wcg_site_web_databases";
 
 
-     
-    
-    private $db_host = "127.0.0.1";  // Change as required
-    
-    private $db_user = "jaco";  // Change as required
-    private $db_pass = "1234";  // Change as required
-    private $db_name = "wcg_site_web_databases"; 
-
-     // private $db_user = "";  // Change as required
-     // private $db_pass = "";  // Change as required
-     // private $db_name = "";    // Change as required
-      
-    
     /*
      * Extra variables that are required by other function such as boolean con variable
      */
     private $con = false; // Check to see if the connection is active
-    private $myconn = ""; // This will be our mysqli object
+    //define PDO object
+    private $pdo;
     private $result = array(); // Any results from a query will be stored here
     private $myQuery = ""; // used for debugging process with SQL return
     private $numResults = ""; // used for returning the number of rows
@@ -43,64 +35,63 @@ class Database
     // Function to make connection to database
     public function connect()
     {
-        try{
+        try {
             if (!$this->con) {
-                $this->myconn = new mysqli($this->db_host, $this->db_user, $this->db_pass, $this->db_name);  // mysql_connect() with variables defined at the start of Database class
-                if ($this->myconn->connect_errno > 0) {
-                    array_push($this->result, $this->myconn->connect_error);
-                    return false; // Problem selecting database return FALSE
-                } else {
-                    $this->con = true;
+                $this->pdo = new PDO("mysql:host=" . $this->db_host . ";dbname=" . $this->db_name, $this->db_user, $this->db_pass);
+                $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+                $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+                $this->pdo->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES utf8");
+                $this->con = true;
+
+                if ($this->con) {
                     return true; // Connection has been made return TRUE
+                } else {
+                    return false; // Connection has not been made return FALSE
                 }
             } else {
-            return true; // Connection has already been made return TRUE 
+                return true; // Connection has already been made return TRUE 
             }
-        }catch(Exception $exception){
+        } catch (Exception $exception) {
             echo "Erreur de connexion : " . $exception->getMessage();
         }
-        
     }
 
     // Function to disconnect from the database
     public function disconnect()
     {
-        // If there is a connection to the database
+        // If there is a PDO object, close the connection
         if ($this->con) {
-            // We have found a connection, try to close it
-            if ($this->myconn->close()) {
-                // We have successfully closed the connection, set the connection variable to false
-                $this->con = false;
-                // Return true tjat we have closed the connection
-                return true;
-            } else {
-                // We could not close the connection, return false
-                return false;
+            if ($this->pdo != null) {
+                $this->pdo = null;
             }
+            $this->con = false; // Set the connection to false
+            return true;
         }
     }
 
-    public function sql($sql)
-    {
-        $this->myconn->query("SET NAMES utf8"); /* manually added for supporting utf 8 unicode characters */
-        $query = $this->myconn->query($sql);
-        // echo $query;
-
-        $this->myQuery = $sql; // Pass back the SQL
+    public function sql($sql) {
+        $query = $this->pdo->prepare($sql);
+        $this->myQuery = $sql;
         if ($query) {
             // If the query returns >= 1 assign the number of rows to numResults
             $this->numResults = 0;
+            //if there is a result and the result is greater than 0
+            if ($query->execute()) {
+                $this->numResults = $query->rowCount();
+            }
+            /* 
             if (isset($query->num_rows) && ($query->num_rows > 0)) {
                 $this->numResults = $query->num_rows;
-            }
+            } */
             // Loop through the query results by the number of rows returned
             for ($i = 0; $i < $this->numResults; $i++) {
-                $r = $query->fetch_array();
+                $r = $query->fetch(PDO::FETCH_ASSOC);
                 $key = array_keys($r);
                 for ($x = 0; $x < count($key); $x++) {
                     if (!is_int($key[$x])) {
-                        if ($query->num_rows >= 1) {
-                           $this->result[$i][$key[$x]] = $r[$key[$x]];
+                        if ($query->rowCount() > 1) {
+                            $this->result[$i][$key[$x]] = $r[$key[$x]];
                         } else {
                             $this->result = null;
                         }
@@ -109,7 +100,7 @@ class Database
             }
             return true; // Query was successful
         } else {
-            array_push($this->result, $this->myconn->error);
+            array_push($this->result, $this->pdo->errorInfo());
             return false; // No rows where returned
         }
     }
@@ -137,18 +128,18 @@ class Database
         // Check to see if the table exists
         if ($this->tableExists($table)) {
             // The table exists, run the query
-            $query = $this->myconn->query($q);
+            $query = $this->pdo->query($q);
             if ($query) {
                 // If the query returns >= 1 assign the number of rows to numResults
-                $this->numResults = $query->num_rows;
+                $this->numResults = $query->rowCount();
                 // Loop through the query results by the number of rows returned
                 for ($i = 0; $i < $this->numResults; $i++) {
-                    $r = $query->fetch_array();
+                    $r = $query->fetch(PDO::FETCH_ASSOC);
                     $key = array_keys($r);
                     for ($x = 0; $x < count($key); $x++) {
                         // Sanitizes keys so only alphavalues are allowed
                         if (!is_int($key[$x])) {
-                            if ($query->num_rows >= 1) {
+                            if ($query->rowCount() > 1) {
                                 $this->result[$i][$key[$x]] = $r[$key[$x]];
                             } else {
                                 $this->result[$i][$key[$x]] = null;
@@ -158,7 +149,7 @@ class Database
                 }
                 return true; // Query was successful
             } else {
-                array_push($this->result, $this->myconn->error);
+                array_push($this->result, $this->pdo->errorInfo());
                 return false; // No rows where returned
             }
         } else {
@@ -169,19 +160,18 @@ class Database
     // Function to insert into the database
     public function insert($table, $params = array())
     {
-        $this->myconn->query("SET NAMES utf8"); /* manually added for supporting utf 8 unicode characters */
         // Check to see if the table exists
         if ($this->tableExists($table)) {
             $sql = 'INSERT INTO `' . $table . '` (`' . implode('`, `', array_keys($params)) . '`) VALUES ("' . implode('", "', $params) . '")';
             // echo $sql;
             $this->myQuery = $sql; // Pass back the SQL
             // Make the query to insert to the database
-            if ($ins = $this->myconn->query($sql)) {
-                array_push($this->result, $this->myconn->insert_id);
+            if ($ins = $this->pdo->query($sql)) {
+                array_push($this->result, $this->pdo->lastInsertId());
                 // print_r($this->result);
                 return true; // The data has been inserted
             } else {
-                array_push($this->result, $this->myconn->error);
+                array_push($this->result, $this->pdo->errorInfo());
                 return false; // The data has not been inserted
             }
         } else {
@@ -190,8 +180,7 @@ class Database
     }
 
     //Function to delete table or row(s) from database
-    public function delete($table, $where = null)
-    {
+    public function delete($table, $where = null){
         // Check to see if table exists
         if ($this->tableExists($table)) {
             // The table exists check to see if we are deleting rows or table
@@ -202,12 +191,12 @@ class Database
                 // echo $sql;// Create query to delete rows
             }
             // Submit query to database
-            if ($del = $this->myconn->query($delete)) {
-                array_push($this->result, $this->myconn->affected_rows);
+            if ($del = $this->pdo->query($delete)) {
+                array_push($this->result, $this->pdo->affected_rows);
                 $this->myQuery = $delete; // Pass back the SQL
                 return true; // The query exectued correctly
             } else {
-                array_push($this->result, $this->myconn->error);
+                array_push($this->result, $this->pdo->error);
                 return false; // The query did not execute correctly
             }
         } else {
@@ -231,11 +220,11 @@ class Database
             // echo $sql;
             // Make query to database
             $this->myQuery = $sql; // Pass back the SQL
-            if ($query = $this->myconn->query($sql)) {
-                array_push($this->result, $this->myconn->affected_rows);
+            if ($query = $this->pdo->query($sql)) {
+                array_push($this->result, $this->pdo->affected_rows);
                 return true; // Update has been successful
             } else {
-                array_push($this->result, $this->myconn->error);
+                array_push($this->result, $this->pdo->error);
                 return false; // Update has not been successful
             }
         } else {
@@ -246,7 +235,7 @@ class Database
     // Private function to check if table exists for use with queries
     private function tableExists($table)
     {
-        $tablesInDb = $this->myconn->query('SHOW TABLES FROM `' . $this->db_name . '` LIKE "' . $table . '"');
+        $tablesInDb = $this->pdo->query('SHOW TABLES FROM `' . $this->db_name . '` LIKE "' . $table . '"');
         if ($tablesInDb) {
             if ($tablesInDb->num_rows == 1) {
                 return true; // The table exists
@@ -258,32 +247,28 @@ class Database
     }
 
     // Public function to return the data to the user
-    public function getResult()
-    {
+    public function getResult() {
         $val = $this->result;
         $this->result = array();
         return $val;
     }
 
     //Pass the SQL back for debugging
-    public function getSql()
-    {
+    public function getSql() {
         $val = $this->myQuery;
         $this->myQuery = array();
         return $val;
     }
 
     //Pass the number of rows back
-    public function numRows()
-    {
+    public function numRows(){
         $val = $this->numResults;
         $this->numResults = array();
         return $val;
     }
 
     // Escape your string
-    public function escapeString($data)
-    {
-        return $this->myconn->real_escape_string($data);
+    public function escapeString($data){
+        return $this->pdo->real_escape_string($data);
     }
 }
