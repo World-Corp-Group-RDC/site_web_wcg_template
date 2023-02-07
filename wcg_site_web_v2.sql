@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.32, for Linux (x86_64)
 --
--- Host: localhost    Database: wcg_site_web_database
+-- Host: localhost    Database: wcg_site_web_databases
 -- ------------------------------------------------------
 -- Server version	8.0.32-0ubuntu0.22.04.2
 
@@ -15,9 +15,144 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+--
+-- Temporary view structure for view `V_Contenu_Expertise`
+--
+
+DROP TABLE IF EXISTS `V_Contenu_Expertise`;
+/*!50001 DROP VIEW IF EXISTS `V_Contenu_Expertise`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `V_Contenu_Expertise` AS SELECT 
+ 1 AS `MED_RESSOURCE`,
+ 1 AS `RUB_TITRE`,
+ 1 AS `RUB_CONTENU`,
+ 1 AS `RUB_META_TITLE`*/;
+SET character_set_client = @saved_cs_client;
 DROP DATABASE IF EXISTS wcg_site_web_databases;
 CREATE DATABASE wcg_site_web_databases;
 use wcg_site_web_databases;
+--
+-- Temporary view structure for view `V_Contenu_Nos_Secteur`
+--
+
+DROP TABLE IF EXISTS `V_Contenu_Nos_Secteur`;
+/*!50001 DROP VIEW IF EXISTS `V_Contenu_Nos_Secteur`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `V_Contenu_Nos_Secteur` AS SELECT 
+ 1 AS `MED_RESSOURCE`,
+ 1 AS `RUB_TITRE`,
+ 1 AS `RUB_CONTENU`,
+ 1 AS `RUB_META_TITLE`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `V_Contenu_projet_innovant`
+--
+
+DROP TABLE IF EXISTS `V_Contenu_projet_innovant`;
+/*!50001 DROP VIEW IF EXISTS `V_Contenu_projet_innovant`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `V_Contenu_projet_innovant` AS SELECT 
+ 1 AS `MED_RESSOURCE`,
+ 1 AS `RUB_TITRE`,
+ 1 AS `RUB_CONTENU`,
+ 1 AS `RUB_META_TITLE`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `V_Contenu_recrutement`
+--
+
+DROP TABLE IF EXISTS `V_Contenu_recrutement`;
+/*!50001 DROP VIEW IF EXISTS `V_Contenu_recrutement`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `V_Contenu_recrutement` AS SELECT 
+ 1 AS `MED_RESSOURCE`,
+ 1 AS `RUB_TITRE`,
+ 1 AS `RUB_CONTENU`,
+ 1 AS `RUB_META_TITLE`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `V_Menu_Princepal`
+--
+
+DROP TABLE IF EXISTS `V_Menu_Princepal`;
+/*!50001 DROP VIEW IF EXISTS `V_Menu_Princepal`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `V_Menu_Princepal` AS SELECT 
+ 1 AS `RUB_ID`,
+ 1 AS `RUB_ICONE_ID`,
+ 1 AS `RUB_LIBELLE`,
+ 1 AS `RUB_BACKGROUND`,
+ 1 AS `RUB_FONT_NAME`,
+ 1 AS `RUB_FONT_SIZE`,
+ 1 AS `RUB_FONT_COLOR`,
+ 1 AS `med_ressource`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `V_Menu_Principal`
+--
+
+DROP TABLE IF EXISTS `V_Menu_Principal`;
+/*!50001 DROP VIEW IF EXISTS `V_Menu_Principal`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `V_Menu_Principal` AS SELECT 
+ 1 AS `RUB_ID`,
+ 1 AS `RUB_ICONE_ID`,
+ 1 AS `RUB_LIBELLE`,
+ 1 AS `RUB_BACKGROUND`,
+ 1 AS `RUB_FONT_NAME`,
+ 1 AS `RUB_FONT_SIZE`,
+ 1 AS `RUB_FONT_COLOR`,
+ 1 AS `med_ressource`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `V_Sous_Menu_Exp`
+--
+
+DROP TABLE IF EXISTS `V_Sous_Menu_Exp`;
+/*!50001 DROP VIEW IF EXISTS `V_Sous_Menu_Exp`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `V_Sous_Menu_Exp` AS SELECT 
+ 1 AS `SRU_ORDRE`,
+ 1 AS `SRU_TITRE`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `V_Sous_Menu_Sect`
+--
+
+DROP TABLE IF EXISTS `V_Sous_Menu_Sect`;
+/*!50001 DROP VIEW IF EXISTS `V_Sous_Menu_Sect`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `V_Sous_Menu_Sect` AS SELECT 
+ 1 AS `SRU_ORDRE`,
+ 1 AS `SRU_TITRE`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `V_home_page_carousel`
+--
+
+DROP TABLE IF EXISTS `V_home_page_carousel`;
+/*!50001 DROP VIEW IF EXISTS `V_home_page_carousel`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `V_home_page_carousel` AS SELECT 
+ 1 AS `MED_RESSOURCE`*/;
+SET character_set_client = @saved_cs_client;
+
 --
 -- Table structure for table `journal_rubrique`
 --
@@ -417,6 +552,168 @@ LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Final view structure for view `V_Contenu_Expertise`
+--
+
+/*!50001 DROP VIEW IF EXISTS `V_Contenu_Expertise`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`jaco`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `V_Contenu_Expertise` AS select `media`.`MED_RESSOURCE` AS `MED_RESSOURCE`,`rubrique`.`RUB_TITRE` AS `RUB_TITRE`,`rubrique`.`RUB_CONTENU` AS `RUB_CONTENU`,`rubrique`.`RUB_META_TITLE` AS `RUB_META_TITLE` from ((`rubrique` join `status` on((`status`.`STA_ID` = `rubrique`.`STA_ID`))) join `media` on((`rubrique`.`RUB_IMG_ID` = `media`.`MED_ID`))) where ((`rubrique`.`RUB_ID` = 1) and (`status`.`STA_ID` = 1)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `V_Contenu_Nos_Secteur`
+--
+
+/*!50001 DROP VIEW IF EXISTS `V_Contenu_Nos_Secteur`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`jaco`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `V_Contenu_Nos_Secteur` AS select `media`.`MED_RESSOURCE` AS `MED_RESSOURCE`,`rubrique`.`RUB_TITRE` AS `RUB_TITRE`,`rubrique`.`RUB_CONTENU` AS `RUB_CONTENU`,`rubrique`.`RUB_META_TITLE` AS `RUB_META_TITLE` from ((`rubrique` join `status` on((`status`.`STA_ID` = `rubrique`.`STA_ID`))) join `media` on((`rubrique`.`RUB_IMG_ID` = `media`.`MED_ID`))) where ((`rubrique`.`RUB_ID` = 2) and (`status`.`STA_ID` = 1)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `V_Contenu_projet_innovant`
+--
+
+/*!50001 DROP VIEW IF EXISTS `V_Contenu_projet_innovant`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`jaco`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `V_Contenu_projet_innovant` AS select `media`.`MED_RESSOURCE` AS `MED_RESSOURCE`,`rubrique`.`RUB_TITRE` AS `RUB_TITRE`,`rubrique`.`RUB_CONTENU` AS `RUB_CONTENU`,`rubrique`.`RUB_META_TITLE` AS `RUB_META_TITLE` from ((`rubrique` join `status` on((`status`.`STA_ID` = `rubrique`.`STA_ID`))) join `media` on((`rubrique`.`RUB_IMG_ID` = `media`.`MED_ID`))) where ((`rubrique`.`RUB_ID` = 3) and (`status`.`STA_ID` = 1)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `V_Contenu_recrutement`
+--
+
+/*!50001 DROP VIEW IF EXISTS `V_Contenu_recrutement`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`jaco`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `V_Contenu_recrutement` AS select `media`.`MED_RESSOURCE` AS `MED_RESSOURCE`,`rubrique`.`RUB_TITRE` AS `RUB_TITRE`,`rubrique`.`RUB_CONTENU` AS `RUB_CONTENU`,`rubrique`.`RUB_META_TITLE` AS `RUB_META_TITLE` from ((`rubrique` join `status` on((`status`.`STA_ID` = `rubrique`.`STA_ID`))) join `media` on((`rubrique`.`RUB_IMG_ID` = `media`.`MED_ID`))) where ((`rubrique`.`RUB_ID` = 5) and (`status`.`STA_ID` = 1)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `V_Menu_Princepal`
+--
+
+/*!50001 DROP VIEW IF EXISTS `V_Menu_Princepal`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`jaco`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `V_Menu_Princepal` AS select `r`.`RUB_ID` AS `RUB_ID`,`r`.`RUB_ICONE_ID` AS `RUB_ICONE_ID`,`r`.`RUB_LIBELLE` AS `RUB_LIBELLE`,`r`.`RUB_BACKGROUND` AS `RUB_BACKGROUND`,`r`.`RUB_FONT_NAME` AS `RUB_FONT_NAME`,`r`.`RUB_FONT_SIZE` AS `RUB_FONT_SIZE`,`r`.`RUB_FONT_COLOR` AS `RUB_FONT_COLOR`,`m`.`MED_RESSOURCE` AS `med_ressource` from ((`rubrique` `r` join `media` `m`) join `site` `s`) where ((`m`.`MED_ID` = `r`.`RUB_ICONE_ID`) and (`r`.`SIT_ID` = `s`.`SIT_ID`) and (`s`.`SIT_ID` = 1)) order by `r`.`RUB_ORDRE` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `V_Menu_Principal`
+--
+
+/*!50001 DROP VIEW IF EXISTS `V_Menu_Principal`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`jaco`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `V_Menu_Principal` AS select `r`.`RUB_ID` AS `RUB_ID`,`r`.`RUB_ICONE_ID` AS `RUB_ICONE_ID`,`r`.`RUB_LIBELLE` AS `RUB_LIBELLE`,`r`.`RUB_BACKGROUND` AS `RUB_BACKGROUND`,`r`.`RUB_FONT_NAME` AS `RUB_FONT_NAME`,`r`.`RUB_FONT_SIZE` AS `RUB_FONT_SIZE`,`r`.`RUB_FONT_COLOR` AS `RUB_FONT_COLOR`,`m`.`MED_RESSOURCE` AS `med_ressource` from ((`rubrique` `r` join `media` `m`) join `site` `s`) where ((`m`.`MED_ID` = `r`.`RUB_ICONE_ID`) and (`r`.`SIT_ID` = `s`.`SIT_ID`) and (`s`.`SIT_ID` = 1)) order by `r`.`RUB_ORDRE` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `V_Sous_Menu_Exp`
+--
+
+/*!50001 DROP VIEW IF EXISTS `V_Sous_Menu_Exp`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`jaco`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `V_Sous_Menu_Exp` AS select `sous_rubrique`.`SRU_ORDRE` AS `SRU_ORDRE`,`sous_rubrique`.`SRU_TITRE` AS `SRU_TITRE` from (`sous_rubrique` join `status` on((`status`.`STA_ID` = `sous_rubrique`.`STA_ID`))) where ((`sous_rubrique`.`RUB_ID` = 1) and (`sous_rubrique`.`STA_ID` = 1)) order by `sous_rubrique`.`SRU_ORDRE` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `V_Sous_Menu_Sect`
+--
+
+/*!50001 DROP VIEW IF EXISTS `V_Sous_Menu_Sect`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`jaco`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `V_Sous_Menu_Sect` AS select `sous_rubrique`.`SRU_ORDRE` AS `SRU_ORDRE`,`sous_rubrique`.`SRU_TITRE` AS `SRU_TITRE` from (`sous_rubrique` join `status` on((`status`.`STA_ID` = `sous_rubrique`.`STA_ID`))) where ((`sous_rubrique`.`RUB_ID` = 2) and (`sous_rubrique`.`STA_ID` = 1)) order by `sous_rubrique`.`SRU_ORDRE` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `V_home_page_carousel`
+--
+
+/*!50001 DROP VIEW IF EXISTS `V_home_page_carousel`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`jaco`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `V_home_page_carousel` AS select `media`.`MED_RESSOURCE` AS `MED_RESSOURCE` from (`media` join `rubrique` on((`media`.`MED_ID` = `rubrique`.`RUB_IMG_ID`))) where ((`rubrique`.`RUB_UNE` = 1) and (`rubrique`.`SIT_ID` = 1)) union select `media`.`MED_RESSOURCE` AS `MED_RESSOURCE` from (`media` join `sous_rubrique` `SRU` on((`media`.`MED_ID` = `SRU`.`SRU_IMG_ID`))) where ((`SRU`.`SRU_UNE` = 1) and (`SRU`.`STA_ID` = 1)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -427,66 +724,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-03 17:13:54
-
-
--- Afficher le menu principal
--- SELECT 
--- 	 r.RUB_ID, r.RUB_ICONE_ID, r.RUB_LIBELLE,r.RUB_BACKGROUND,r.RUB_FONT_NAME,r.RUB_FONT_SIZE,r.RUB_FONT_COLOR, m.med_ressource FROM rubrique r, media m, site s  
--- WHERE 
--- 	m.med_id = r.rub_icone_id and r.SIT_ID = s.SIT_ID and s.SIT_ID = 1 
--- order by r.RUB_ORDRE
-
-
-
-/*
--- action hover sur un menu principal
--- identifiant_rubrique : {1,2,4,5}
--- identifiant_status:{1,2}
-
-SELECT SRU_ORDRE, SRU_TITRE  
-  FROM sous_rubrique
-  INNER JOIN status   ON status.STA_ID = sous_rubrique.STA_ID 
-WHERE sous_rubrique.RUB_ID = 2 AND sous_rubrique.STA_ID = identifiant_status  
-  ORDER BY SRU_ORDRE; 
-*/
-
-
-/*
--- action clique  sur un menu pricipal
--- identifiant_rubrique :{1,2,4,5}
--- identifiant_status:{1,2}
-
-SELECT RUB_CONTENU,RUB_TITRE, RUB_BACKGROUND,RUB_FONT_NAME,RUB_FONT_COLOR,RUB_FONT_SIZE 
-  FROM rubrique
-  INNER JOIN status   ON status.STA_ID = rubrique.STA_ID 
-WHERE sous_rubrique.RUB_ID = 2 AND sous_rubrique.STA_ID = identifiant_status  
-  ORDER BY SRU_ORDRE;
-*/
-
-/*
--- action clique  sur un sous-menu 
--- identifiant_rubrique(1:exper,2:secteur,4:home,5:rec)
-
-SELECT SRU_TITRE,SRU_CONTENU, SRU_FONT_NAME,SRU_FONT_SIZE,SRU_FONT_COLOR,SRU_BACKGROUND,SRU_LIBELLE 
-FROM  sous_rubrique  
-WHERE SRU_ID = identifiant_rubrique;
-*/
-
-/*
--- Remplir template home_page
--- Carousel 
- SELECT media.MED_RESSOURCE 
-FROM media 
-INNER JOIN rubrique ON media.MED_ID = rubrique.RUB_IMG_ID
-WHERE media.MED_ID= rubrique.RUB_IMG_ID AND 
-rubrique.RUB_UNE = 1 AND SIT_ID = 1
-UNION
-SELECT media.MED_RESSOURCE  
-
-LIMIT 5
-
-
-
-;
-*/
+-- Dump completed on 2023-02-07 11:44:18
