@@ -8,7 +8,7 @@ class Custom_functions
     function __construct()
     {
         $this->db = new Database();
-        $this->db->connexion();
+        $this->db->connect();
     }
 
 
